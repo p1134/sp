@@ -1,5 +1,5 @@
 <?php
-// src/Controller/ApiController.php
+
 namespace App\Controller;
 
 use Kreait\Firebase\Contract\Database;
