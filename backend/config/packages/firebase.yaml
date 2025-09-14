@@ -2,4 +2,4 @@ kreait_firebase:
   projects:
     default:
       credentials: '/var/www/html/config/firebase_credentials.json'
-      database_uri: 'https://stacja-pogodowa-c4fdb-default-rtdb.firebaseio.com'
+      database_uri: 'https://stacja-pogodowa-c4fdb-default-rtdb.europe-west1.firebasedatabase.app'
