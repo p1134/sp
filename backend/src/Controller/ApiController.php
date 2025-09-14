@@ -2,14 +2,19 @@
 // src/Controller/ApiController.php
 namespace App\Controller;
 
+use Kreait\Firebase\Contract\Database;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ApiController
+class ApiController extends AbstractController
 {
-    #[Route('/api/endpoint', name: 'api_endpoint')]
-    public function index(): JsonResponse
+    #[Route('/api/data', name: 'firebase_data')]
+    public function index(Database $database): JsonResponse
     {
-        return new JsonResponse(['message' => 'Działa!']);
+        $reference = $database->getReference('users/paulina');
+        $data = $reference->getValue();
+
+        return $this->json($data);
     }
 }
