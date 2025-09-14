@@ -20,7 +20,7 @@ RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 # Ustawienia Apache
 RUN a2enmod rewrite
 
-# 🔧 Poprawna konfiguracja VirtualHost z DocumentRoot i przekierowaniem do Symfony
+# 🔧 Konfiguracja VirtualHost Symfony
 RUN echo "<VirtualHost *:80>" > /etc/apache2/sites-available/000-default.conf && \
     echo "    DocumentRoot /var/www/html/public" >> /etc/apache2/sites-available/000-default.conf && \
     echo "    <Directory /var/www/html/public>" >> /etc/apache2/sites-available/000-default.conf && \
@@ -31,6 +31,9 @@ RUN echo "<VirtualHost *:80>" > /etc/apache2/sites-available/000-default.conf &&
 
 # 🔧 Dodaj .htaccess do public/, jeśli go nie masz
 RUN echo "RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^(.*)$ index.php [QSA,L]" > /var/www/html/public/.htaccess
+
+# 🔐 Ustaw uprawnienia do Secret File z Firebase
+RUN chmod 644 /etc/secrets/firebase_credentials.json || true
 
 # Ustaw właściciela plików
 RUN chown -R www-data:www-data /var/www/html
