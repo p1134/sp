@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 🔐 Ustaw uprawnienia do Firebase credentials po starcie kontenera
-chmod 644 /etc/secrets/firebase_credentials.json || true
+# 🔐 Skopiuj plik z secrets do katalogu aplikacji
+cp /etc/secrets/firebase_credentials.json /var/www/html/config/firebase_credentials.json
 
 # ✅ Uruchom Apache
 exec apache2-foreground
