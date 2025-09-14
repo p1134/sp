@@ -9,18 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
 {
-    // #[Route('/api/data', name: 'firebase_data')]
-    // public function index(Database $database): JsonResponse
-    // {
-    //     $reference = $database->getReference('/pomiar');
-    //     $data = $reference->getValue();
+    #[Route('/api/data', name: 'firebase_data')]
+    public function index(Database $database): JsonResponse
+    {
+        $reference = $database->getReference('/pomiar');
+        $data = $reference->getValue();
 
-    //     return $this->json($data);
-    // }
-    #[Route('/api/ping', name: 'ping')]
-public function ping(): JsonResponse
-{
-    return $this->json(['status' => 'ok']);
-}
-
+        return $this->json($data);
+    }
 }
