@@ -1,4 +1,4 @@
 kreait_firebase:
   projects:
     default:
-      credentials: '%kernel.project_dir%/config/firebase_credentials.json'
+      credentials: '/etc/secrets/firebase_credentials.json'
