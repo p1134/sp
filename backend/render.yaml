@@ -3,5 +3,5 @@ services:
     name: symfony-backend
     env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: ../Dockerfile
     autoDeploy: true
