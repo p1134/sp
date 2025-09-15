@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import api from './api';
+import React, { useEffect, useState } from "react";
+import api from "./api"; // zakładam, że plik to src/api.js
 
-function App() {
+const WeatherData = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    api.get('/api/data')
-      .then(response => setData(response.data))
-      .catch(error => console.error('Błąd połączenia z API:', error));
+    api.get("/api/data")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.error("Błąd pobierania danych:", err);
+      });
   }, []);
 
   return (
     <div>
-      <h1>Dane z Symfony API</h1>
+      <h2>Dane pogodowe</h2>
       {data ? (
         <pre>{JSON.stringify(data, null, 2)}</pre>
       ) : (
@@ -20,6 +24,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
-export default App;
+export default WeatherData;
