@@ -13,7 +13,7 @@ class ApiController extends AbstractController
 public function index(Database $database): JsonResponse
 {
     try {
-        $reference = $database->getReference('users/paulina');
+        $reference = $database->getReference('/pomiar');
         $data = $reference->getValue();
         return $this->json($data);
     } catch (\Throwable $e) {
