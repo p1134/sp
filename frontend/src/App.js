@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    api.get('/data')
+    api.get('/api/data')
       .then(response => setData(response.data))
       .catch(error => console.error('Błąd połączenia z API:', error));
   }, []);
