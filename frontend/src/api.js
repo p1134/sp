@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://sp-djc0.onrender.com', // zmień na adres backendu
+  baseURL: process.env.REACT_APP_API_URL + '/api',
 });
 
 export default api;
